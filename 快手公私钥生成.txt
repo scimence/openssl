@@ -1,0 +1,15 @@
+
+1、双击启动bin/openssl.exe
+2、手动输入命令（或者）复制一行命令，右击标题栏--》编辑--》粘贴
+3、Enter完成输入，生成对应公私钥文件
+
+(1) 生成private_key.pem
+genrsa -out app_private_key.pem 4096
+
+(2) 生成private_key_pkcs8.txt
+pkcs8 -topk8 -inform PEM -in app_private_key.pem -outform PEM -nocrypt -out app_private_key_pkcs8.pem
+
+(3) 生成public_key.pem
+rsa -in app_private_key.pem -pubout -out app_public_key.pem
+
+

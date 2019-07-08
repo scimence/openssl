@@ -1,0 +1,27 @@
+
+public_key.pem  公钥，这个发到QQ群里,和平台完成密钥交换
+private_key.pem 私钥  这个给技术人员（服务器端技术）
+pkcs8_private_key.txt pkcs8转码后的私钥  这个给技术人员（客户端技术），使用时，去掉空格和换行
+
+
+
+注释：
+pkcs8_private_key 是客户端Demo里面的CP_PRIVATE_KEY
+public_key.pem 是客户端Demo里面的CP_PUBLIC_KEY
+
+
+生成步骤：
+(1) //生成private_key.pem
+OpenSSL> genrsa -out private_key.pem 1024  
+         
+(2) //生成pkcs8_private_key.txt
+OpenSSL> pkcs8 -topk8 -inform PEM -in private_key.pem -outform PEM -nocrypt -out pkcs8_private_key.txt
+
+(3) //生成public_key.pem
+OpenSSL> rsa -in private_key.pem -pubout -out public_key.pem
+
+
+1、双击启动bin/openssl.exe
+2、手动输入命令（或者）复制一行命令，右击标题栏--》编辑--》粘贴
+3、Enter完成输入，生成对应公私钥文件
+
